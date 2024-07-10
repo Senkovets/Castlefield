@@ -6,9 +6,13 @@ public class Spawner : MonoBehaviour
     public GameObject SpawnUnit;
     public float StartDelay;
     public float SpawnTime;
-    void Start()
+    public void TurnOn()
     {
         InvokeRepeating(nameof(Spawn), StartDelay, SpawnTime);
+    }
+    public void TurnOff()
+    {
+        CancelInvoke(nameof(Spawn));
     }
     private void Spawn()
     {
