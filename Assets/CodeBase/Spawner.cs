@@ -1,21 +1,32 @@
+using System.Collections;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Transform _spawnPoint;
-    public GameObject SpawnUnit;
-    public float StartDelay;
+    private bool _isSpawning;
+    public GameObject UnitPrefab;
     public float SpawnTime;
-    public void TurnOn()
+    private void Start()
     {
-        InvokeRepeating(nameof(Spawn), StartDelay, SpawnTime);
+        On();
     }
-    public void TurnOff()
+    public void On()
     {
-        CancelInvoke(nameof(Spawn));
+        _isSpawning = true;
+        StartCoroutine(Spawn());
     }
-    private void Spawn()
+    public void Off()
     {
-        Instantiate(SpawnUnit, _spawnPoint.position, SpawnUnit.transform.rotation);
+        _isSpawning = false;
+        StopCoroutine(Spawn());
+    }
+    private IEnumerator Spawn()
+    {
+        while (_isSpawning)
+        {
+            yield return new WaitForSeconds(SpawnTime);
+            Instantiate(UnitPrefab, _spawnPoint.position, UnitPrefab.transform.rotation);
+        }
     }
 }

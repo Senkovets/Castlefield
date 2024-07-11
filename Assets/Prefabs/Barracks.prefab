@@ -120,9 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 7042801018663520769}
-  SpawnUnit: {fileID: 5180829268296346998, guid: 58f42247899bb614ca06f159eb5637e7,
+  UnitPrefab: {fileID: 5180829268296346998, guid: 58f42247899bb614ca06f159eb5637e7,
     type: 3}
-  StartDelay: 1
   SpawnTime: 2
 --- !u!1 &4965439382768851349
 GameObject:
