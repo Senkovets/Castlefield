@@ -27,7 +27,8 @@ public class Spawner : MonoBehaviour
         while (_isSpawning)
         {
             yield return new WaitForSeconds(SpawnTime);
-            GameObject Unit = Instantiate(UnitPrefab, _spawnPoint.position, UnitPrefab.transform.rotation);
+            UnitStack _unitStack = Instantiate(UnitPrefab, _spawnPoint.position, UnitPrefab.transform.rotation).GetComponent<UnitStack>();
+            _unitStack.AddAmount(SpawnCount);
         }
     }
 }
