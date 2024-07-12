@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     private bool _isSpawning;
     public GameObject UnitPrefab;
     public float SpawnTime;
+    public int SpawnCount;
     private void Start()
     {
         On();
@@ -26,7 +27,7 @@ public class Spawner : MonoBehaviour
         while (_isSpawning)
         {
             yield return new WaitForSeconds(SpawnTime);
-            Instantiate(UnitPrefab, _spawnPoint.position, UnitPrefab.transform.rotation);
+            GameObject Unit = Instantiate(UnitPrefab, _spawnPoint.position, UnitPrefab.transform.rotation);
         }
     }
 }
