@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ClickableObject : MonoBehaviour
 {
     [SerializeField] private Outline _outline;
     [SerializeField] private bool _isSelected = false;
+
+    public UnityEvent OnClick = new UnityEvent();
     public bool IsSelected => _isSelected;
 
     private void Awake()
@@ -34,6 +37,8 @@ public class ClickableObject : MonoBehaviour
         //SelectionManager.Instance.SelectObject(this);
         _isSelected = !_isSelected;
         _outline.enabled = !_outline.enabled;
+
+        OnClick?.Invoke();
     }
 
     public void Selected(bool isSelected)

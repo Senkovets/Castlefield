@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class EconomicsBuildingState : BaseBuildState
@@ -9,26 +10,39 @@ public class EconomicsBuildingState : BaseBuildState
 
     public override void Start()
     {
-        throw new System.NotImplementedException();
+        Produce();
     }
 
     public override void Stop()
     {
-        throw new System.NotImplementedException();
+        StopAllCoroutines();
     }
 
     public override void Sell()
     {
+        Debug.Log("Sell");
         _stateSwither.SwitchSatte<NoBuildingState>();
     }
 
     public override void Produce()
     {
-        Debug.Log("Coin++");
+        StartCoroutine(ProduceCoroutine());
+    }
+
+    private IEnumerator ProduceCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f);
+            Debug.Log("Coin++");
+        }
     }
 
     public override void Upgrade()
     {
         Debug.Log("UpgradeEconom");
+        _stateSwither.SwitchSatte<BarrackBuildingState>();
     }
+
+
 }

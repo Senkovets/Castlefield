@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class NoBuildingState : BaseBuildState
@@ -8,27 +9,28 @@ public class NoBuildingState : BaseBuildState
     }
     public override void Start()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void Stop()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void Sell()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void Produce()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void Upgrade()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Upgrade");
+        _stateSwither.SwitchSatte<EconomicsBuildingState>();
     }
 
     

@@ -44,4 +44,5 @@ public class BuildingStationBehaviour : MonoBehaviour, IStationStateSwithcer
         state.Start();
         _currentSate = state;
     }
+
 }
