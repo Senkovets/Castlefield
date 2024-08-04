@@ -1,21 +1,20 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class BarrackBuildingState : BaseBuildState
 {
-    public BarrackBuildingState(Text statustext, IStationStateSwithcer stateSwithcer) : base(statustext, stateSwithcer)
+    public BarrackBuildingState(int level, BuildingVisualBehaviour visualBehaviuor, IStationStateSwithcer stateSwithcer) : base(level, visualBehaviuor, stateSwithcer)
     {
     }
 
-    public override void Start()
+    public override void StartState()
     {
-        Produce();
+
     }
 
     public override void Stop()
     {
-        StopAllCoroutines();
+
     }
 
     public override void Sell()
@@ -26,20 +25,13 @@ public class BarrackBuildingState : BaseBuildState
 
     public override void Produce()
     {
-        StartCoroutine(ProduceCoroutine());
-    }
-
-    private IEnumerator ProduceCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(5f);
-            Debug.Log("Coin++");
-        }
+        Debug.Log("Unit++");
+        _visualBehaviuor.BarrackProduce();
     }
 
     public override void Upgrade()
     {
         Debug.Log("UpgradeBarack");
+        _stateSwither.SwitchSatte<NoBuildingState>();
     }
 }

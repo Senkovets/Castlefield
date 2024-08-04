@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class NoBuildingState : BaseBuildState
 {
-    public NoBuildingState(Text statustext, IStationStateSwithcer stateSwithcer) : base(statustext, stateSwithcer)
+    public NoBuildingState(int level, BuildingVisualBehaviour visualBehaviuor, IStationStateSwithcer stateSwithcer) : base(level, visualBehaviuor, stateSwithcer)
     {
     }
-    public override void Start()
+
+    public override void StartState()
     {
 
     }

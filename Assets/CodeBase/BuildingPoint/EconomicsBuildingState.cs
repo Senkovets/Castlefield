@@ -1,21 +1,20 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class EconomicsBuildingState : BaseBuildState
 {
-    public EconomicsBuildingState(Text statustext, IStationStateSwithcer stateSwithcer) : base(statustext, stateSwithcer)
+    public EconomicsBuildingState(int level, BuildingVisualBehaviour visualBehaviuor, IStationStateSwithcer stateSwithcer) : base(level, visualBehaviuor, stateSwithcer)
     {
     }
 
-    public override void Start()
+    public override void StartState()
     {
-        Produce();
+
     }
 
     public override void Stop()
     {
-        StopAllCoroutines();
+
     }
 
     public override void Sell()
@@ -26,16 +25,9 @@ public class EconomicsBuildingState : BaseBuildState
 
     public override void Produce()
     {
-        StartCoroutine(ProduceCoroutine());
-    }
-
-    private IEnumerator ProduceCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(5f);
-            Debug.Log("Coin++");
-        }
+        Debug.Log("Coin++");
+        _visualBehaviuor.EconomicsProduce();
+        
     }
 
     public override void Upgrade()

@@ -1,19 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class BaseBuildState : MonoBehaviour
+public abstract class BaseBuildState 
 {
-    protected readonly Text _statusText;
-    protected readonly IStationStateSwithcer _stateSwither;
+    protected int _level;
+    protected BuildingVisualBehaviour _visualBehaviuor;
+    protected IStationStateSwithcer _stateSwither;
 
-    protected BaseBuildState(Text statustext, IStationStateSwithcer stateSwithcer)
+    protected BaseBuildState(int level,BuildingVisualBehaviour visualBehaviuor, IStationStateSwithcer stateSwithcer)
     {
-        _statusText = statustext;
+        _level = level;
+        _visualBehaviuor = visualBehaviuor;
         _stateSwither = stateSwithcer;
     }
 
 
-    public abstract void Start();
+    public abstract void StartState();
     public abstract void Stop();
     public abstract void Produce();
     public abstract void Upgrade();
